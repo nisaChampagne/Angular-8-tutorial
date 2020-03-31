@@ -1,0 +1,14 @@
+<p>list-component works!</p>
+<h1>Hello Earthings!</h1>
+<div class="play-container">
+    <p>You've clicked <span (click)="countClick()">This</span> {{ clickCounter }} times.</p>
+    <span (click)="countNegClick()"> - </span>
+</div>
+
+<div>
+    <p>
+        <input type="text" [(ngModel)]="name"> <!--Will receive and send data-->
+        <br>
+        <strong>You said: </strong> {{ name }}
+    </p>
+</div>
