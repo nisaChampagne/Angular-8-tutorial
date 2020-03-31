@@ -1,14 +1,49 @@
 <p>list-component works!</p>
-<h1>Hello Earthings!</h1>
+<h1>Hello {{ name }}!</h1>
+
+<div>
+    <!--Structural directive-->
+    <ul *ngIf="brews">
+        <li *ngFor="let brew of brews">
+            {{ brew.name }}
+            {{ brew.id }}
+            {{ brew.state }}
+           <a href= "{{  brew.website_url }}">Site</a>
+        </li>
+    </ul>
+</div>
+
 <div class="play-container">
-    <p>You've clicked <span (click)="countClick()">This</span> {{ clickCounter }} times.</p>
+    <!--Event binding-->
+    <p>You've clicked <span (click)="countClick()">This
+
+    </span>        
+        <!-- data binding-->
+        {{ clickCounter }} times.</p>
     <span (click)="countNegClick()"> - </span>
 </div>
 
 <div>
     <p>
+        <!-- 2 way binding (send and receive data )-->
         <input type="text" [(ngModel)]="name"> <!--Will receive and send data-->
         <br>
         <strong>You said: </strong> {{ name }}
     </p>
+</div>
+
+<!--Style/ property binding is like inline html styling-->
+<!--Attributes directive-->
+<div [ngStyle]="{
+    'background-color': clickCounter > 4 ? 'green' : 'teal',
+    'border': clickCounter > 4 ? '4px solid black': 'none' 
+}">
+    <!-- ng-template is angular 8 specific-->
+        <!--Structural directive-->
+    <ng-template [ngIf]="clickCounter >4" [ngIfElse]="none">
+        <p>The Click Counter <strong> IS GREATER </strong> than 4.</p>
+    </ng-template>
+    <ng-template #none> 
+        <p>Keep Going!</p>
+    </ng-template>
 </div>
